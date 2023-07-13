@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Job>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<div>
+   
+    <a asp-action="Create" asp-asp-controller="Job" class="btn btn-primary">Create new Job</a>
+   
+</div>
+
+
+        <table class="table table-bordered table-hover">
+
+            
+
+            <tr>
+
+                <th>@Html.DisplayNameFor(c=>c.JobId)</th>
+                <th>@Html.DisplayNameFor(c=>c.JobName)</th>
+              
+
+
+            </tr>
+            @foreach (var custeomr in Model)
+            {
+                <tr>
+                    <td>@custeomr.JobId</td>
+                     <td>  @custeomr.JobName</td>
+                  
+                 
+                </tr>
+            }
+
+        </table>
+
+
+
+  
+

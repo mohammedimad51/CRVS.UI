@@ -1,0 +1,28 @@
+﻿@model Job
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create New job</h1>
+
+<form method="post" asp-action="Create" asp-controller="Job">
+    <table class=" table table-bordered table-striped">
+
+        <tr>
+            <td> <label asp-for="JobName"></label> </td>
+            <td>
+                <input asp-for="JobName" class="form-control" placeholder="Enter Name" />
+              
+            </td>
+
+        </tr>
+       
+        <td colspan="2">
+            <input type="submit" value="Create" class="btn btn-success" />
+            <a asp-action="Index" class="btn btn-warning">Cancel</a>
+        </td>
+
+      
+    </table>
+</form>
+

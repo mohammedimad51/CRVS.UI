@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CRVS.Core.Models
+{
+    public class User
+    {
+        public string? UserId { get; set; }
+
+        public string? FName { get; set;}
+        public string? LName { get; set; }
+        public string? Email { get; set;}
+        public string? Phone { get; set;} 
+        public string? Img { get; set;}
+        public bool IsBlocked { get; set;}
+        public DateTime? RegisterDate { get; set;}
+        public string? Governorate { get; set; }
+        public string? Doh { get; set; }
+        public string? District { get; set; }
+        public string? Nahia { get; set; }
+
+        public string? Village { get; set;}
+        public string? FacilityType { get; set;}
+        public string? HealthInstitution{ get; set; }
+        public string? RoleName{ get; set; }
+
+
+
+
+
+
+
+    }
+}

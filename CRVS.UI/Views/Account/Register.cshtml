@@ -1,0 +1,112 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+   // Layout = null;
+}
+
+<h1>Register New User</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register" asp-controller="Account" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            //
+            <div class="form-group">
+                <label asp-for="FName" class="control-label"></label>
+                <input asp-for="FName" class="form-control" />
+                <span asp-validation-for="FName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LName" class="control-label"></label>
+                <input asp-for="LName" class="form-control" />
+                <span asp-validation-for="LName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Img" class="control-label"></label>
+                <input asp-for="Img" class="form-control" />
+                <span asp-validation-for="Img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Governorate" class="control-label"></label>
+                <input asp-for="Governorate" class="form-control" />
+                <span asp-validation-for="Governorate" class="text-danger"></span>
+            </div>
+           
+
+            <div class="form-group">
+                <label asp-for="Doh" class="control-label"></label>
+                <input asp-for="Doh" class="form-control" />
+                <span asp-validation-for="Doh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District" class="control-label"></label>
+                <input asp-for="District" class="form-control" />
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nahia" class="control-label"></label>
+                <input asp-for="Nahia" class="form-control" />
+                <span asp-validation-for="Nahia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Village" class="control-label"></label>
+                <input asp-for="Village" class="form-control" />
+                <span asp-validation-for="Village" class="text-danger"></span>
+            </div>
+          
+
+            <div class="form-group">
+                <label asp-for="FacilityType" class="control-label"></label>
+                <input asp-for="FacilityType" class="form-control" />
+                <span asp-validation-for="FacilityType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District" class="control-label"></label>
+                <input asp-for="District" class="form-control" />
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthInstitution" class="control-label"></label>
+                <input asp-for="HealthInstitution" class="form-control" />
+                <span asp-validation-for="HealthInstitution" class="text-danger"></span>
+            </div>
+           
+          
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+                <a asp-action="Login">I Have Account</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
