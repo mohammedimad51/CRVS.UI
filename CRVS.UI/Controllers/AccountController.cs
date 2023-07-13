@@ -43,7 +43,7 @@ namespace CRVS.UI.Controllers
                     UserName = model.UserEmail,
                     Email = model.UserEmail,
                     PhoneNumber = model.Phone,
-                 
+                  
                 };
                
 
