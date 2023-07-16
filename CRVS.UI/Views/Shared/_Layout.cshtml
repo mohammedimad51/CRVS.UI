@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model User
+
+<!DOCTYPE html>
 <html dir="rtl" lang="en">
 
 <head>
@@ -225,8 +227,18 @@
                                 <div class="d-flex no-block align-items-center p-3 bg-primary text-white mb-2">
                                     <div class=""><img src="~/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="60"></div>
                                     <div class="ms-2">
-                                        <h4 class="mb-0 text-white">Steave Jobs</h4>
-                                        <p class=" mb-0">varun@gmail.com</p>
+                                          @if (_signInManager.IsSignedIn(User))
+                        {
+                         
+
+                                         @*   <h4 class="mb-0 text-white">@UserManager.GetUserId(User)</h4>*@
+                                            <h4 class="mb-0 text-white">
+                                                @ViewBag.FullName
+                                               </h4>
+                         
+                      
+                                            <p class=" mb-0">@User.Identity!.Name</p>
+                        }
                                     </div>
                                 </div>
                                 <a class="dropdown-item" href="#">

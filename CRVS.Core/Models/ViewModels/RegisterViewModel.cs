@@ -36,4 +36,5 @@ namespace CRVS.Core.Models.ViewModels
         public string? RoleName { get; set; }
 
     }
+   
 }
