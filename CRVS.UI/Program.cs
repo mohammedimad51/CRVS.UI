@@ -3,6 +3,7 @@ using CRVS.EF;
 using CRVS.EF.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddTransient(typeof(IBaseRepository<>),typeof(BaseRepository<>));
+builder.Services.AddSession(x=>x.IdleTimeout=TimeSpan.FromMinutes(1));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,7 +33,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 

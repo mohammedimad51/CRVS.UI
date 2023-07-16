@@ -1,0 +1,33 @@
+﻿
+
+@model IEnumerable<IdentityUser>
+
+@{
+    ViewData["Title"] = "AllUsers";
+}
+
+<h1>AllUsers</h1>
+
+<table class="table table-bordered table-hover">
+    <tr>
+
+        <td> @Html.DisplayNameFor(n=>n.Email)</td>
+        <td> @Html.DisplayNameFor(n=>n.UserName)</td>
+        <td> @Html.DisplayNameFor(n=>n.PhoneNumber)</td>
+
+
+
+    </tr>
+    @foreach (var App in Model)
+    {
+        <tr>
+
+            <td> @App.Email</td>
+            <td> @App.UserName</td>
+            <td> @App.PhoneNumber</td>
+
+
+
+        </tr>
+    }
+</table>
