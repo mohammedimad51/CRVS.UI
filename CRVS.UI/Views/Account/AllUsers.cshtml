@@ -1,6 +1,6 @@
 ﻿
 
-@model IEnumerable<IdentityUser>
+@*@model IEnumerable<User>*@
 
 @{
     ViewData["Title"] = "AllUsers";
@@ -11,20 +11,20 @@
 <table class="table table-bordered table-hover">
     <tr>
 
-        <td> @Html.DisplayNameFor(n=>n.Email)</td>
-        <td> @Html.DisplayNameFor(n=>n.UserName)</td>
-        <td> @Html.DisplayNameFor(n=>n.PhoneNumber)</td>
+        <td> Email</td>
+        <td>FName</td>
+        <td> LName</td>
 
 
 
     </tr>
-    @foreach (var App in Model)
+    @foreach (var App in ViewBag.user)
     {
         <tr>
 
             <td> @App.Email</td>
-            <td> @App.UserName</td>
-            <td> @App.PhoneNumber</td>
+            <td> @App.FName</td>
+            <td> @App.LName</td>
 
 
 

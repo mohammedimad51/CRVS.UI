@@ -120,7 +120,7 @@
                                     <div class="form-group">
                                         <label asp-for="FName" class="control-label">الاسم الاول</label>
                                         <input asp-for="FName" class="form-control" />
-                                       
+                                       0
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="LName" class="control-label">الاسم الاخير</label>
@@ -143,8 +143,9 @@
                                   
                                     <div class="form-group">
                                         <label asp-for="Doh">دائرة الصحة</label>
-                                    <select id="DohId" class="form-control">
+                                        <select asp-for="Doh"  id="DohId" class="form-control">
                                         <option value="">يرجى اختيار دائرة الصحة</option>
+                                        
                                     </select>
 
                                     </div>
@@ -152,14 +153,15 @@
                                     <div class="form-group">
 
                                         <label asp-for="FacilityType" class="control-label">نوع المؤسسة</label>
-                                        <select asp-for="FacilityType" asp-itemid="FacilityTypeId"
+                                        <select asp-for="FacilityType" id="FacilityTypeId"
                                                 class="form-control"
+                                              
                                                 asp-items="@(new SelectList(@ViewBag.ListofFacilityType,"FacilityTypeId", "FacilityTypeName"))"></select>
                                     </div>
-                             
+                                   
                                     <div class="form-group">
                                         <label asp-for="HealthInstitution">اسم المؤسسة</label>
-                                        <select id="HealthInstitutionId" class="form-control">
+                                        <select asp-for="HealthInstitution" id="HealthInstitutionId" class="form-control">
                                             <option value="">يرجى اختيار اسم المؤسسة</option>
                                         </select>
 
@@ -167,14 +169,14 @@
                                    
                                     <div class="form-group">
                                         <label asp-for="District">القضاء</label>
-                                        <select id="DistrictId" class="form-control">
+                                        <select asp-for="District"  id="DistrictId" class="form-control">
                                             <option value="">يرجى اختيار القضاء</option>
                                         </select>
 
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="Nahia">الناحية:</label>
-                                        <select id="NahiaId" class="form-control">
+                                        <select asp-for="Nahia" id="NahiaId" class="form-control">
                                             <option value="">يرجى اختيار الناحية</option>
                                         </select>
 
@@ -303,6 +305,7 @@
         $('#DohId').html(items);
         $('#DistrictId').html(items);
         $('#NahiaId').html(items);
+      //  $('#HealthInstitutionId').html(items);
     });
 </script>
 ‌
@@ -318,14 +321,16 @@
                     items += "<option value='" + doh.value + "'>" + doh.text + "</option>";
                 });
                 $('#DohId').html(items);
+             //  return document.getElementById("DohId").value; id is DohId
+             //string DohId in controller
             });
         });
 
-        $('#DohId').change(function () {
+        $('#FacilityTypeId').change(function () {
             var url = '@Url.Content("~/")' + "Account/GetHealthInstitution";
             var ddlsource = "#DohId";
-          
-            $.getJSON(url, { DohId: $(ddlsource).val() }, function (data) {
+            var ddlsource1 = "#FacilityTypeId";
+            $.getJSON(url, { DohId: $(ddlsource).val(), FacilityTypeId: $(ddlsource1).val() }, function (data) {
                 var items = '';
                 $('#HealthInstitutionId').empty();
                 $.each(data, function (i, healthInstitution) {
@@ -334,7 +339,20 @@
                 $('#HealthInstitutionId').html(items);
             });
         });
-        $('#GovernorateId').change(function () {
+        $('#DohId').change(function () {
+            var url = '@Url.Content("~/")' + "Account/GetHealthInstitution";
+            var ddlsource = "#DohId";
+            var ddlsource1 = "#FacilityTypeId";
+            $.getJSON(url, { DohId: $(ddlsource).val(), FacilityTypeId: $(ddlsource1).val() }, function (data) {
+                var items = '';
+                $('#HealthInstitutionId').empty();
+                $.each(data, function (i, healthInstitution) {
+                    items += "<option value='" + healthInstitution.value + "'>" + healthInstitution.text + "</option>";
+                });
+                $('#HealthInstitutionId').html(items);
+            });
+        });
+              $('#GovernorateId').change(function () {
             var url = '@Url.Content("~/")' + "Account/GetDistrict";
             var ddlsource = "#GovernorateId";
             $.getJSON(url, { GovernorateId: $(ddlsource).val() }, function (data) {
@@ -359,4 +377,45 @@
             });
         });
     });
+  
+
 </script>
+@*<script>
+    $(document).ready(function(){
+        $('#FacilityTypeId').change(function () {
+            var ListofFacilityType = $(this).val();
+        var selecteDohId = $('#DohId').val();
+            var selecteDohId = $('#FacilityTypeId').val();
+      
+   
+                $.ajax({
+                url: '/Account/GetHealthInstitution',
+                   type: 'GET',
+                data: { FacilityTypeId: ListofFacilityType, DohId: selectedDohId },
+                    dataType: 'json',
+                    success: function (data) {
+                    var nahiaDropdown = $('#HealthInstitutionId');
+                        nahiaDropdown.empty();
+                        var selectOption = $('<option></option>').val('').text('---select ');
+    selectOption.prop('disabled', true);
+    selectOption.prop('hidden', true);
+    selectOption.prop('selected', true);
+    nahiaDropdown.append(selectOption); 
+    $.each(data, function (index, item) {
+
+                        var option = $('<option></option>').val(item.HealthInstitutionId).text(item.HealthInstitutionName);
+                    nahiaDropdown.append(option);
+                   
+                    });
+                    },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+            });
+            });
+</script>*@
+
+ 
+
+

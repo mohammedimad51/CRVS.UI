@@ -4,6 +4,7 @@ using CRVS.EF;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CRVS.UI.Controllers
@@ -69,14 +70,15 @@ namespace CRVS.UI.Controllers
                     PhoneNumber = model.Phone,
                   
                 };
-               
+
 
                 var result = await userManager.CreateAsync(user, model.Password!);
                 if (result.Succeeded)
 
-                   
+              
 
-                {
+                { 
+                 
                     User userInf = new User
                     {
                      UserId = user.Id,
@@ -88,8 +90,8 @@ namespace CRVS.UI.Controllers
                      IsBlocked=false,
                      RegisterDate = DateTime.Now,
                      Governorate= model.Governorate,
-                     Doh= model.Doh,
-                     District= model.District,
+                     Doh = model.Doh ,
+                    District = model.District,
                      Nahia= model.Nahia,
                      Village= model.Village,
                      FacilityType= model.FacilityType,
@@ -226,13 +228,13 @@ namespace CRVS.UI.Controllers
         }
         [AllowAnonymous]
 
-        public JsonResult GetHealthInstitution(int DohId)
+        public JsonResult GetHealthInstitution(int DohId , int FacilityTypeId)
         {
             List<HealthInstitution> HealthInstitutionList = new List<HealthInstitution>();
 
             HealthInstitutionList = (from HealthInstitution in db.HealthInstitutions
                                      where
-                           HealthInstitution.DohId == DohId    
+                           HealthInstitution.DohId == DohId && HealthInstitution.FacilityTypeId == FacilityTypeId
                                      select HealthInstitution).ToList();
             HealthInstitutionList.Insert(0, new HealthInstitution { HealthInstitutionId = 0, HealthInstitutionName = "يرجة اختيار اسم المؤسسة" });
             return Json(new SelectList(HealthInstitutionList, "HealthInstitutionId", "HealthInstitutionName"));
@@ -270,14 +272,19 @@ namespace CRVS.UI.Controllers
         #region Roles
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult AllUsers123()
+        public IActionResult AllUsers()
         {
-            return View(userManager.Users);
+
+            ViewBag.user = db.Users.ToList();
+
+            return View();
         }
         [AllowAnonymous]
+        [HttpGet]
         public IActionResult RolesList()
         {
-            return View(roleManager.Roles);
+            ViewBag.roleList = db.Roles.ToList();
+            return View();
         }
 
         [HttpGet]
@@ -294,6 +301,7 @@ namespace CRVS.UI.Controllers
                 RoleId = roleData.Id,
                 RoleName = roleData.Name
 
+
             };
             foreach (var user in userManager.Users)
             {
@@ -302,12 +310,14 @@ namespace CRVS.UI.Controllers
                     model.Users!.Add(user.UserName!);
                 }
             }
+          
             return View(model);
         }
 
        
         [HttpPost]
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
+             
         {
             if (ModelState.IsValid)
             {
