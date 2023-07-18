@@ -81,12 +81,9 @@ namespace CRVS.EF.Repositories
 
         public void Update(int id, T model)
         {
-            var entity = _context.Set<T>().Find(id);
-            if (entity != null)
-            {
-                _context.Set<T>().Update(entity);
+                _context.Set<T>().Update(model);
                 SaveChanges();
             }
-        }
+      
     }
 }

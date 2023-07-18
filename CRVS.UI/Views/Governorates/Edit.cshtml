@@ -1,0 +1,30 @@
+﻿@model Governorate
+
+@{
+    ViewData["Title"] = "EditGovernorate";
+}
+
+<h1>Modify Information of Governorate</h1>
+<h2 class="text-danger">@ViewBag.check</h2>
+<form method="post" asp-action="Edit" asp-controller="Governorates">
+    <input type="hidden" asp-for="GovernorateId" />
+    <table class=" table table-bordered table-striped">
+        <input type="hidden" asp-for="GovernorateId" />
+        <tr>
+            <td> <label asp-for="GovernorateName"></label> </td>
+            <td>
+                <input asp-for="GovernorateName" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="GovernorateName"></span>
+            </td>
+
+        </tr>
+       
+        <td colspan="2">
+            <input type="submit" value="UpDate" class="btn btn-success" />
+            <a asp-action="Index" class="btn btn-warning">Cancle</a>
+        </td>
+
+        </tr>
+    </table>
+</form>
+
