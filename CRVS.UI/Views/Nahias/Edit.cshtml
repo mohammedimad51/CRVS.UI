@@ -1,0 +1,54 @@
+﻿@model Nahia
+
+@{
+    ViewData["Title"] = "EditGovernorate";
+}
+
+<h1>Modify Information of Nahia</h1>
+<h2 class="text-danger">@ViewBag.check</h2>
+<form method="post" asp-action="Edit" asp-controller="Nahias">
+    <input type="hidden" asp-for="NahiaId" />
+    <table class=" table table-bordered table-striped">
+      
+        <tr>
+            <td> <label asp-for="NahiaName"></label> </td>
+            <td>
+                <input asp-for="NahiaName" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="NahiaName"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td> <label asp-for="GovernorateId"></label> </td>
+            <td>
+                <input asp-for="GovernorateId" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="GovernorateId"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td> <label asp-for="DohId"></label> </td>
+            <td>
+                <input asp-for="DohId" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="DohId"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td> <label asp-for="DistrictId"></label> </td>
+            <td>
+                <input asp-for="DistrictId" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="DistrictId"></span>
+            </td>
+
+        </tr>
+       
+        <td colspan="2">
+            <input type="submit" value="UpDate" class="btn btn-success" />
+            <a asp-action="Index" class="btn btn-warning">Cancle</a>
+        </td>
+
+        </tr>
+    </table>
+</form>
+

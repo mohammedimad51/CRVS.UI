@@ -1,0 +1,54 @@
+﻿@model IEnumerable<District>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<div>
+
+    <a asp-action="Create" asp-asp-controller="Districts" class="btn btn-primary">Create new District</a>
+
+</div>
+
+
+<table class="table table-bordered table-hover">
+
+
+
+    <tr>
+
+     
+        <th>@Html.DisplayNameFor(c=>c.DistrictName)</th>
+        <th>@Html.DisplayNameFor(c=>c.GovernorateId)</th>
+        <th>@Html.DisplayNameFor(c=>c.DohId)</th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>  @item.DistrictName</td>
+            <td>  @item.GovernorateId</td>
+            <td>  @item.DohId</td>
+
+        </tr>
+        <tr>
+         <td>
+                <a asp-route-id="@item.DistrictId" class="btn btn-warning btn-sm" asp-action="Edit">Edit</a>
+                <a asp-route-id="@item.DistrictId" class="btn btn-danger btn-sm" asp-action="Delete">Delete</a>
+                <a asp-route-id="@item.DistrictId" class="btn btn-secondary btn-sm" asp-action="Details">Details</a>
+
+                    </td>
+                </tr>
+    }
+
+</table>
+
+
+
+
+

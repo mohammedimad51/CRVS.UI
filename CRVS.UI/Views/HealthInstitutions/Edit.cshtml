@@ -1,0 +1,54 @@
+﻿@model HealthInstitution
+
+@{
+    ViewData["Title"] = "EditGovernorate";
+}
+
+<h1>Modify Information of doh</h1>
+<h2 class="text-danger">@ViewBag.check</h2>
+<form method="post" asp-action="Edit" asp-controller="HealthInstitutions">
+    <input type="hidden" asp-for="HealthInstitutionId" />
+    <table class=" table table-bordered table-striped">
+        <input type="hidden" asp-for="HealthInstitutionId" />
+        <tr>
+            <td> <label asp-for="HealthInstitutionName"></label> </td>
+            <td>
+                <input asp-for="HealthInstitutionName" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="HealthInstitutionName"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td> <label asp-for="GovernorateId"></label> </td>
+            <td>
+                <input asp-for="GovernorateId" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="GovernorateId"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td> <label asp-for="DohId"></label> </td>
+            <td>
+                <input asp-for="DohId" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="DohId"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td> <label asp-for="FacilityTypeId"></label> </td>
+            <td>
+                <input asp-for="FacilityTypeId" class="form-control" placeholder="Enter Name" />
+                <span class="text-danger" asp-validation-for="FacilityTypeId"></span>
+            </td>
+
+        </tr>
+       
+        <td colspan="2">
+            <input type="submit" value="UpDate" class="btn btn-success" />
+            <a asp-action="Index" class="btn btn-warning">Cancle</a>
+        </td>
+
+        </tr>
+    </table>
+</form>
+

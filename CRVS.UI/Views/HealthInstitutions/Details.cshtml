@@ -1,0 +1,48 @@
+﻿@model HealthInstitution
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>HealthInstitution</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HealthInstitutionName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HealthInstitutionName)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GovernorateId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GovernorateId)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DohId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DohId)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FacilityTypeId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FacilityTypeId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="HealthInstitutionId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

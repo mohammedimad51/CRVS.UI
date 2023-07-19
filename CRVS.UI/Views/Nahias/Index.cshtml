@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Nahia>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<div>
+
+    <a asp-action="Create" asp-asp-controller="Nahias" class="btn btn-primary">Create new Nahia</a>
+
+</div>
+
+
+<table class="table table-bordered table-hover">
+
+
+
+    <tr>
+
+     
+        <th>@Html.DisplayNameFor(c=>c.NahiaName)</th>
+        <th>@Html.DisplayNameFor(c=>c.GovernorateId)</th>
+        <th>@Html.DisplayNameFor(c=>c.DohId)</th>
+       
+        <th>@Html.DisplayNameFor(c=>c.DistrictId)</th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>  @item.NahiaName</td>
+            <td>  @item.GovernorateId</td>
+            <td>  @item.DohId</td>
+            <td>  @item.DistrictId</td>
+           
+
+        </tr>
+        <tr>
+         <td>
+                <a asp-route-id="@item.NahiaId" class="btn btn-warning btn-sm" asp-action="Edit">Edit</a>
+                <a asp-route-id="@item.NahiaId" class="btn btn-danger btn-sm" asp-action="Delete">Delete</a>
+                <a asp-route-id="@item.NahiaId" class="btn btn-secondary btn-sm" asp-action="Details">Details</a>
+
+                    </td>
+                </tr>
+    }
+
+</table>
+
+
+
+
+
