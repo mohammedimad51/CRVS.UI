@@ -18,6 +18,14 @@
                 <input asp-for="NahiaName" class="form-control" />
                 <span asp-validation-for="NahiaName" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+
+                <label asp-for="GovernorateId" class="control-label">المحافظة</label>
+                <select asp-for="GovernorateId" id="GovernorateId"
+                        class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.ListofGov,"GovernorateId", "GovernorateName"))"></select>
+            </div>
             <div class="form-group">
                 <label asp-for="DohId">دائرة الصحة</label>
                 <select asp-for="DohId" id="DohId" class="form-control">
@@ -27,7 +35,7 @@
 
             </div>
             <div class="form-group">
-                <label asp-for="DistrictId">دائرة الصحة</label>
+                <label asp-for="DistrictId"> </label>
                 <select asp-for="DistrictId" id="DistrictId" class="form-control">
                  
 

@@ -61,7 +61,14 @@ namespace CRVS.UI.Controllers
 
         {
 
-
+            List<Governorate> categorylist = new List<Governorate>();
+            categorylist = db.Governorates.ToList();
+            categorylist.Insert(0, new Governorate
+            {
+                GovernorateId = 0,
+                GovernorateName = "يرجى اختيار المحافظة "
+            });
+            ViewBag.ListofGov = categorylist;
 
             if (id == null)
             {
