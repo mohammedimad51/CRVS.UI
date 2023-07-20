@@ -18,10 +18,13 @@
                 <input asp-for="DohName" class="form-control" />
                 <span asp-validation-for="DohName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="GovernorateId" class="control-label"></label>
-                <input asp-for="GovernorateId" class="form-control" />
-                <span asp-validation-for="GovernorateId" class="text-danger"></span>
+
+                <label asp-for="GovernorateId" class="control-label">المحافظة</label>
+                <select asp-for="GovernorateId" id="GovernorateId"
+                        class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.ListofGov,"GovernorateId", "GovernorateName"))"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -33,4 +36,9 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 

@@ -19,19 +19,27 @@
                 <span asp-validation-for="HealthInstitutionName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GovernorateId" class="control-label"></label>
-                <input asp-for="GovernorateId" class="form-control" />
-                <span asp-validation-for="GovernorateId" class="text-danger"></span>
+
+                <label asp-for="GovernorateId" class="control-label">المحافظة</label>
+                <select asp-for="GovernorateId" id="GovernorateId"
+                        class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.ListofGov,"GovernorateId", "GovernorateName"))"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DohId">دائرة الصحة</label>
+                <select asp-for="DohId" id="DohId" class="form-control">
+                    <option value="">يرجى اختيار دائرة الصحة</option>
+
+                </select>
+
             </div>
             <div class="form-group">
-                <label asp-for="DohId" class="control-label"></label>
-                <input asp-for="DohId" class="form-control" />
-                <span asp-validation-for="DohId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FacilityTypeId" class="control-label"></label>
-                <input asp-for="FacilityTypeId" class="form-control" />
-                <span asp-validation-for="FacilityTypeId" class="text-danger"></span>
+
+                <label asp-for="FacilityTypeId" class="control-label">نوع المؤسسة</label>
+                <select asp-for="FacilityTypeId" id="FacilityTypeId"
+                        class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.ListofFacilityType,"FacilityTypeId", "FacilityTypeName"))"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -44,3 +52,41 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script src="~/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var items = "<option value=يرجى الاختيار </option>";
+        $('#DohId').html(items);
+   
+    });
+</script>
+‌
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#GovernorateId').change(function () {
+            var url = '@Url.Content("~/")' + "Account/GetDoh";
+            var ddlsource = "#GovernorateId";
+            $.getJSON(url, { GovernorateId: $(ddlsource).val() }, function (data) {
+                var items = '';
+                $("#DohId").empty();
+                $.each(data, function (i, doh) {
+                    items += "<option value='" + doh.value + "'>" + doh.text + "</option>";
+                });
+                $('#DohId').html(items);
+                //  return document.getElementById("DohId").value; id is DohId
+                //string DohId in controller
+            });
+        });
+
+        
+    });
+
+
+</script>

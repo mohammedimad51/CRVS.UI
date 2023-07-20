@@ -1,5 +1,6 @@
 ﻿using CRVS.Core.IRepositories;
 using CRVS.Core.Models;
+using CRVS.EF;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +10,12 @@ namespace CRVS.UI.Controllers
     public class DohsController : Controller
     {
         public IBaseRepository<Doh> repository;
-        public DohsController(IBaseRepository<Doh> _repository)
+        private readonly ApplicationDbContext db;
+        public DohsController(IBaseRepository<Doh> _repository, ApplicationDbContext _db)
         {
 
             repository = _repository;
+           db = _db;   
         }
         public IActionResult Index()
         {
@@ -28,7 +31,14 @@ namespace CRVS.UI.Controllers
 
         {
 
-
+            List<Governorate> categorylist = new List<Governorate>();
+            categorylist = db.Governorates.ToList();
+            categorylist.Insert(0, new Governorate
+            {
+                GovernorateId = 0,
+                GovernorateName = "يرجى اختيار المحافظة "
+            });
+            ViewBag.ListofGov = categorylist;
             return View();
 
         }
@@ -49,7 +59,14 @@ namespace CRVS.UI.Controllers
 
         {
 
-
+            List<Governorate> categorylist = new List<Governorate>();
+            categorylist = db.Governorates.ToList();
+            categorylist.Insert(0, new Governorate
+            {
+                GovernorateId = 0,
+                GovernorateName = "يرجى اختيار المحافظة "
+            });
+            ViewBag.ListofGov = categorylist;
 
             if (id == null)
             {

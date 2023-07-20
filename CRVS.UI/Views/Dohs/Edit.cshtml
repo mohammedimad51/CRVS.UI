@@ -21,8 +21,14 @@
         <tr>
             <td> <label asp-for="GovernorateId"></label> </td>
             <td>
-                <input asp-for="GovernorateId" class="form-control" placeholder="Enter Name" />
-                <span class="text-danger" asp-validation-for="GovernorateId"></span>
+
+                <div class="form-group">
+
+                    <label asp-for="GovernorateId" class="control-label">المحافظة</label>
+                    <select asp-for="GovernorateId" id="GovernorateId"
+                            class="form-control"
+                            asp-items="@(new SelectList(@ViewBag.ListofGov,"GovernorateId", "GovernorateName"))"></select>
+                </div>
             </td>
 
         </tr>
@@ -35,4 +41,13 @@
         </tr>
     </table>
 </form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+‌
+
 
