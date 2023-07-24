@@ -9,11 +9,17 @@
 
 <div>
 
-    <a asp-action="Create" asp-asp-controller="Governorates" class="btn btn-primary">Create new Governorate</a>
-
+    <a asp-action="Create" asp-asp-controller="Governorates" class="btn btn-primary ">Add New  </a>
+    <a asp-action="Import" asp-asp-controller="Governorates" class="btn btn-warning ">Import</a>
+  
 </div>
+<div class="row">
+    <div class="col-5">
 
-
+      
+    </div>
+</div>
+<hr />
 <table class="table table-bordered table-hover">
 
 
@@ -23,7 +29,7 @@
      
         <th>@Html.DisplayNameFor(c=>c.GovernorateName)</th>
 
-
+        <th></th>
 
     </tr>
     @foreach (var item in Model)
@@ -33,18 +39,18 @@
             <td>  @item.GovernorateName</td>
 
 
-        </tr>
-        <tr>
-         <td>
+            <td>
+
                 <a asp-route-id="@item.GovernorateId" class="btn btn-warning btn-sm" asp-action="Edit">Edit</a>
                 <a asp-route-id="@item.GovernorateId" class="btn btn-danger btn-sm" asp-action="Delete">Delete</a>
                 <a asp-route-id="@item.GovernorateId" class="btn btn-secondary btn-sm" asp-action="Details">Details</a>
-
-                    </td>
+            </td>
                 </tr>
     }
 
 </table>
+
+
 
 
 

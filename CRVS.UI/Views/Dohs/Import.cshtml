@@ -1,0 +1,19 @@
+﻿@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Doh Import Page";
+}
+
+<div class="text-center">
+    <form asp-controller="Dohs" asp-action="Import" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-6">
+                <input type="file" name="postedFile" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 mt-3">
+                <input type="submit" value="Import" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>
