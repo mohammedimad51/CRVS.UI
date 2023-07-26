@@ -20,21 +20,23 @@
     </div>
 </div>
 <hr />
-<table class="table table-bordered table-hover">
+<table id="myTable" class="table table-bordered table-hover">
 
+    <thead>
+        <tr>
 
-
-    <tr>
 
      
         <th>@Html.DisplayNameFor(c=>c.GovernorateName)</th>
 
         <th></th>
 
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
 
             <td>  @item.GovernorateName</td>
 
@@ -45,14 +47,22 @@
                 <a asp-route-id="@item.GovernorateId" class="btn btn-danger btn-sm" asp-action="Delete">Delete</a>
                 <a asp-route-id="@item.GovernorateId" class="btn btn-secondary btn-sm" asp-action="Details">Details</a>
             </td>
-                </tr>
-    }
-
+            </tr>
+        }
+    </tbody>
 </table>
 
 
 
-
-
-
+@section Scripts{
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        var js = jQuery.noConflict(true);
+        js(document).ready(function () {
+            js('#myTable').DataTable({
+            });
+        });
+    </script>
+}
+<link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
 
